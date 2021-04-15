@@ -1,4 +1,5 @@
 import 'package:arkit_plugin/arkit_plugin.dart';
+import 'package:arkit_plugin/utils/json_converters.dart';
 import 'package:flutter/material.dart';
 import 'package:vector_math/vector_math_64.dart' as vector;
 
@@ -42,14 +43,17 @@ class _FaceDetectionPageState extends State<FaceDetectionPage> {
     if (!(anchor is ARKitFaceAnchor)) {
       return;
     }
-    final material = ARKitMaterial(
-      fillMode: ARKitFillMode.fill,
-      diffuse: ARKitMaterialProperty(
-        image:
-            'https://free-png.ru/wp-content/uploads/2019/05/Logotip-instagram-t.png',
-      ),
-    );
+    // final material = ARKitMaterial(
+    //   fillMode: ARKitFillMode.fill,
+    //   diffuse: ARKitMaterialProperty(
+    //     image:
+    //         'https://free-png.ru/wp-content/uploads/2019/05/Logotip-instagram-t.png',
+    //   ),
+    // );
     final ARKitFaceAnchor faceAnchor = anchor;
+    final material=ARKitMaterial(
+        fillMode: ARKitFillMode.lines,
+    );
     faceAnchor.geometry.materials.value = [material];
 
     anchorId = anchor.identifier;
@@ -81,10 +85,10 @@ class _FaceDetectionPageState extends State<FaceDetectionPage> {
     if (anchor is ARKitFaceAnchor) {
       final ARKitFaceAnchor faceAnchor = anchor;
       arkitController.updateFaceGeometry(node, anchor.identifier);
-      _updateEye(leftEye, faceAnchor.leftEyeTransform,
-          faceAnchor.blendShapes['eyeBlink_L']);
-      _updateEye(rightEye, faceAnchor.rightEyeTransform,
-          faceAnchor.blendShapes['eyeBlink_R']);
+      // _updateEye(leftEye, faceAnchor.leftEyeTransform,
+      //     faceAnchor.blendShapes['eyeBlink_L']);
+      // _updateEye(rightEye, faceAnchor.rightEyeTransform,
+      //     faceAnchor.blpes['eyeBlink_R']);
     }
   }
 
